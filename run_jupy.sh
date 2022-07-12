@@ -10,6 +10,10 @@
 #                                                                          #
 ############################################################################
 #/
+# setting text formating
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+RESET=`tput sgr0`
 
 DATA_DIR="${PWD}/data"
 WORK_DIR="${PWD}/workdir"
@@ -30,7 +34,9 @@ docker run -tid \
        -v ${WORK_DIR}:${ENTRY_DIR}/workdir \
        jupy:latest && \
        sleep 2
-
+echo "${GREEN}Here after the token necessary to login${RED}"
 docker exec -ti jupy tail -n 1 jupy.log |grep token |cut -d'=' -f2
-
+echo "${RESET} the token is newly generated at each run, but if you need to show it again,"
+echo "run the following command:"
+echo 'docker exec -ti jupy tail -n 1 jupy.log |grep token |cut -d'=' -f2'
 

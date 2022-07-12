@@ -98,8 +98,8 @@ runjupy () {
 main () {
   test
   symconf
-#  symdata
-#  symruntime
+  symdata
+  symruntime
   runjupy
 }
 
