@@ -79,7 +79,6 @@ symdata () {
 #     sudo mv -f /usr/share/jupyter  ${DATA_PATH}/dat/usrshare && \
 #     sudo rm -f /usr/share/jupyter/ && \
 #     sudo ln -s ${DATA_PATH}/dat/usrshare /usr/share/jupyter
-
 }
 
 symruntime () {
@@ -92,17 +91,14 @@ symruntime () {
 runjupy () {
     sudo chmod  -R 740 /home/jupy/*
     sudo -u jupy nohup  jupyter-lab --ip='0.0.0.0' --no-browser > jupy.log
-    sudo cp ${USER_PATH}/jupy.log ${WORK_DIR}/
 }
 
 main () {
   test
-  symconf
-  symdata
-  symruntime
+#  symconf
+#  symdata
+#  symruntime
   runjupy
 }
 
 main
-#sudo cp nohuo.log /home/jupy/data/log.txt
-#sudo tail -n 2  /home/jupy/data/nohup.out

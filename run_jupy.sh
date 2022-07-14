@@ -19,6 +19,9 @@ DATA_DIR="${PWD}/data"
 WORK_DIR="${PWD}/workdir"
 ENTRY_DIR="/home/jupy"
 
+#build the image
+docker build -t jupy:latest .
+
 docker rm -f jupy
 #rm -r ${DATA_DIR} ${WORK_DIR}
 
@@ -34,9 +37,13 @@ docker run -tid \
        -v ${WORK_DIR}:${ENTRY_DIR}/workdir \
        jupy:latest && \
        sleep 2
-echo "${GREEN}Here after the token necessary to login${RED}"
+
+echo "${GREEN}Here after the token necessary to login"
+echo "${RED}"
 docker exec -ti jupy tail -n 1 jupy.log |grep token |cut -d'=' -f2
-echo "${RESET} the token is newly generated at each run, but if you need to show it again,"
+echo "${GREEN}" 
+echo "the token is newly generated at each run, but if you need to show it again,"
 echo "run the following command:"
-echo 'docker exec -ti jupy tail -n 1 jupy.log |grep token |cut -d'=' -f2'
+echo '        docker exec -ti jupy tail -n 1 jupy.log |grep token |cut -d'=' -f2' 
+echo "${RESET}"
 
